@@ -5,7 +5,7 @@ Developer Mode - Live Changes like would when running normally. Use Dockerfile-d
 ```
 docker compose -f "docker-compose-dev.yml" up -d 
 ```
-### For Development Mode
+### For Production Mode
 For shipping images or for devops mode use Dockerfile & docker-compose.yml
 ```
 docker compose up
