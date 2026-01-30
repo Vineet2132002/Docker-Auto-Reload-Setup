@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    # container_name: node-webserver
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/admin1/Practice/app-live-reloads:/app      # live mount
+
+    # The official node:20-alpine base image has its own entrypoint script (docker-entrypoint.sh) 
+    # that changes to /usr/src/app before executing commands. Even though your Dockerfile sets 
+    # WORKDIR /app, the entrypoint can override where the shell starts. but setting working_dir in compose
+    # seems to do the trick else it is not working
+    working_dir: /app
+    restart: unless-stopped
+    command: ["npm", "start"]
